@@ -21,15 +21,49 @@ const JSX = (
 - React offers a less expensive method of updating the DOM via use of the 'Virtual DOM'
 - React stores an 'old state' DOM and a 'new state' DOM in memory & uses a diffing algorithm to determin an efficient way to update the actual DOM
 - JSX is rendered to the DOM with `ReactDOM.render(componentToRender, targetNode)` e.g `ReactDOM.render(JSX, document.getElementById('root'))`
+- React Components are rendered to the DOM with `ReactDOM.render(<ComponentToRender />, targetNode)`
 - Creates two virtual trees and Compares them, keys help with this diff algorithm
 - Uses a diffing algorithm to calculate minimum operations to patch only the 
 - The HTML DOM https://www.w3schools.com/whatis/whatis_htmldom.asp
 - Tech Talk: What is the Virtual DOM?: https://www.youtube.com/watch?v=d7pyEDqBDeE 
 ## create components
-- Components are the core of React
-- Components in React can either be stateless functional components or ES6 class components
-- a stateless functional component can receives data and it returns JSX
+- components in React can either be stateless functional components or ES6 class components
+- a stateless functional component can receives data and it returns JSX e.g :
+```
+const MyComponent = () => {
+  return(
+    <div>Hello</div> 
+  );
+}
+```
+- an ES6 class component extends `React.component` eg:
+```
+class MyComponent extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return(<h1>Hello React</h1>)
+  }
+}
+```
+- here `extends` creates a child class of a parent class React.Component
+- `super()` is used within a class component's constructor to call the parent's constructor function
+- a class component's return statement is nested within a `render()` method
+- React components can be composed into other react components in the return statement of other react components eg :
+```
+const MyComponent = () = > {
+  return (
+    <div>
+      <ComponentOne />
+      <ComponentTwo />
+      <ComponentThree />
+    </div>
+  );
+}
+```
 ## handle state
 ## handle props
+-  props is passed to both constructor() and super() functions within a class component
 ## utilize event listeners
 ## utilize certain life cycle methods to update data as it changes
